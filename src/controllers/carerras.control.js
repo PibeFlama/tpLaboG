@@ -1,5 +1,4 @@
 const carreras= require("../../data/carreras.json");
-const { messages } = require("../schemas/materias.schemas");
 const controller={}
 
 
@@ -24,6 +23,7 @@ const postCarrera= (req,res) =>{
     }
     carreras.push(
         {id,
+        nombre:data.nombre,
         grado:data.grado,
         universidad:data.universidad,
         materias:data.materias})
@@ -36,6 +36,9 @@ const deleteCarreraById= (req,res) => {
     const borrar= carreras.splice(posic,1)
     res.status(200).json({mensaje: "se borra la carrera: ", objeto: borrar[0]})
 }
+
+
+    
 
 module.exports= {getAllCarreras, getCarreraByID, postCarrera, deleteCarreraById}
 
